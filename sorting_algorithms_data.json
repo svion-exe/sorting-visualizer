@@ -1,0 +1,110 @@
+{
+  "bubbleSort": {
+    "name": "Bubble Sort",
+    "timeComplexity": {
+      "best": "O(n)",
+      "average": "O(n\u00b2)",
+      "worst": "O(n\u00b2)"
+    },
+    "spaceComplexity": "O(1)",
+    "stable": true,
+    "description": "Compares adjacent elements and swaps them if they're in wrong order",
+    "category": "comparison-based"
+  },
+  "selectionSort": {
+    "name": "Selection Sort",
+    "timeComplexity": {
+      "best": "O(n\u00b2)",
+      "average": "O(n\u00b2)",
+      "worst": "O(n\u00b2)"
+    },
+    "spaceComplexity": "O(1)",
+    "stable": false,
+    "description": "Finds minimum element and places it at the beginning",
+    "category": "comparison-based"
+  },
+  "insertionSort": {
+    "name": "Insertion Sort",
+    "timeComplexity": {
+      "best": "O(n)",
+      "average": "O(n\u00b2)",
+      "worst": "O(n\u00b2)"
+    },
+    "spaceComplexity": "O(1)",
+    "stable": true,
+    "description": "Builds sorted array one element at a time",
+    "category": "comparison-based"
+  },
+  "mergeSort": {
+    "name": "Merge Sort",
+    "timeComplexity": {
+      "best": "O(n log n)",
+      "average": "O(n log n)",
+      "worst": "O(n log n)"
+    },
+    "spaceComplexity": "O(n)",
+    "stable": true,
+    "description": "Divides array into halves, sorts them, then merges back",
+    "category": "divide-and-conquer"
+  },
+  "quickSort": {
+    "name": "Quick Sort",
+    "timeComplexity": {
+      "best": "O(n log n)",
+      "average": "O(n log n)",
+      "worst": "O(n\u00b2)"
+    },
+    "spaceComplexity": "O(log n)",
+    "stable": false,
+    "description": "Selects pivot and partitions array around it",
+    "category": "divide-and-conquer"
+  },
+  "heapSort": {
+    "name": "Heap Sort",
+    "timeComplexity": {
+      "best": "O(n log n)",
+      "average": "O(n log n)",
+      "worst": "O(n log n)"
+    },
+    "spaceComplexity": "O(1)",
+    "stable": false,
+    "description": "Uses heap data structure to sort elements",
+    "category": "selection-based"
+  },
+  "radixSort": {
+    "name": "Radix Sort",
+    "timeComplexity": {
+      "best": "O(nk)",
+      "average": "O(nk)",
+      "worst": "O(nk)"
+    },
+    "spaceComplexity": "O(n + k)",
+    "stable": true,
+    "description": "Sorts by processing digits from least to most significant",
+    "category": "non-comparison"
+  },
+  "shellSort": {
+    "name": "Shell Sort",
+    "timeComplexity": {
+      "best": "O(n log n)",
+      "average": "O(n^1.3)",
+      "worst": "O(n\u00b2)"
+    },
+    "spaceComplexity": "O(1)",
+    "stable": false,
+    "description": "Extension of insertion sort with gap sequence",
+    "category": "comparison-based"
+  },
+  "countingSort": {
+    "name": "Counting Sort",
+    "timeComplexity": {
+      "best": "O(n + k)",
+      "average": "O(n + k)",
+      "worst": "O(n + k)"
+    },
+    "spaceComplexity": "O(n + k)",
+    "stable": true,
+    "description": "Counts occurrences of each element to sort",
+    "category": "non-comparison"
+  }
+}

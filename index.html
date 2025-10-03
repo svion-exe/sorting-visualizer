@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting Algorithm Visualization Lab</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-content">
+                <h1 class="app-title">
+                    <i class="fas fa-chart-bar"></i>
+                    Sorting Algorithm Lab
+                </h1>
+                <div class="header-controls">
+                    <button id="themeToggle" class="btn btn--secondary">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button id="soundToggle" class="btn btn--secondary">
+                        <i class="fas fa-volume-up"></i>
+                    </button>
+                    <button id="exportBtn" class="btn btn--outline">
+                        <i class="fas fa-download"></i> Export
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Control Panel -->
+            <div class="control-panel">
+                <!-- Algorithm Selection -->
+                <div class="control-section">
+                    <h3>Algorithm</h3>
+                    <select id="algorithmSelect" class="form-control">
+                        <option value="bubbleSort">Bubble Sort</option>
+                        <option value="selectionSort">Selection Sort</option>
+                        <option value="insertionSort">Insertion Sort</option>
+                        <option value="mergeSort">Merge Sort</option>
+                        <option value="quickSort">Quick Sort</option>
+                        <option value="heapSort">Heap Sort</option>
+                        <option value="radixSort">Radix Sort</option>
+                        <option value="shellSort">Shell Sort</option>
+                        <option value="countingSort">Counting Sort</option>
+                    </select>
+                </div>
+
+                <!-- Playback Controls -->
+                <div class="control-section">
+                    <h3>Playback</h3>
+                    <div class="playback-controls">
+                        <button id="stepBackBtn" class="btn btn--secondary">
+                            <i class="fas fa-step-backward"></i>
+                        </button>
+                        <button id="playPauseBtn" class="btn btn--primary">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <button id="stepForwardBtn" class="btn btn--secondary">
+                            <i class="fas fa-step-forward"></i>
+                        </button>
+                        <button id="resetBtn" class="btn btn--outline">
+                            <i class="fas fa-redo"></i>
+                        </button>
+                    </div>
+                    <div class="speed-control">
+                        <label for="speedSlider">Speed</label>
+                        <input type="range" id="speedSlider" min="1" max="10" value="5" class="slider">
+                        <span id="speedValue">5</span>
+                    </div>
+                </div>
+
+                <!-- Array Controls -->
+                <div class="control-section">
+                    <h3>Array Configuration</h3>
+                    <div class="array-controls">
+                        <div class="size-control">
+                            <label for="sizeSlider">Size: <span id="sizeValue">50</span></label>
+                            <input type="range" id="sizeSlider" min="5" max="200" value="50" class="slider">
+                        </div>
+                        <div class="distribution-control">
+                            <label for="distributionSelect">Distribution</label>
+                            <select id="distributionSelect" class="form-control">
+                                <option value="random">Random</option>
+                                <option value="nearlySorted">Nearly Sorted</option>
+                                <option value="reverse">Reverse Sorted</option>
+                                <option value="fewUnique">Few Unique</option>
+                                <option value="gaussian">Gaussian</option>
+                            </select>
+                        </div>
+                        <button id="shuffleBtn" class="btn btn--secondary">
+                            <i class="fas fa-shuffle"></i> Shuffle
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Visualization Options -->
+                <div class="control-section">
+                    <h3>Visualization</h3>
+                    <div class="viz-controls">
+                        <div class="style-selector">
+                            <label>Style</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="vizStyle" value="bars" checked> Bars</label>
+                                <label><input type="radio" name="vizStyle" value="dots"> Dots</label>
+                                <label><input type="radio" name="vizStyle" value="shapes"> Shapes</label>
+                            </div>
+                        </div>
+                        <div class="mode-toggles">
+                            <button id="mode3dBtn" class="btn btn--outline">
+                                <i class="fas fa-cube"></i> 3D Mode
+                            </button>
+                            <button id="heatmapBtn" class="btn btn--outline">
+                                <i class="fas fa-thermometer-half"></i> Heat Map
+                            </button>
+                            <button id="raceBtn" class="btn btn--outline">
+                                <i class="fas fa-flag"></i> Race Mode
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visualization Area -->
+            <div class="visualization-container">
+                <!-- Stats Panel -->
+                <div class="stats-panel">
+                    <div class="algorithm-info">
+                        <h4 id="currentAlgorithm">Bubble Sort</h4>
+                        <p id="algorithmDescription">Compares adjacent elements and swaps them if they're in wrong order</p>
+                    </div>
+                    
+                    <div class="complexity-info">
+                        <div class="complexity-item">
+                            <span class="label">Best Case:</span>
+                            <span id="bestCase">O(n)</span>
+                        </div>
+                        <div class="complexity-item">
+                            <span class="label">Average:</span>
+                            <span id="averageCase">O(n²)</span>
+                        </div>
+                        <div class="complexity-item">
+                            <span class="label">Worst Case:</span>
+                            <span id="worstCase">O(n²)</span>
+                        </div>
+                        <div class="complexity-item">
+                            <span class="label">Space:</span>
+                            <span id="spaceComplexity">O(1)</span>
+                        </div>
+                        <div class="complexity-item">
+                            <span class="label">Stable:</span>
+                            <span id="stable" class="status status--success">Yes</span>
+                        </div>
+                    </div>
+
+                    <div class="live-stats">
+                        <div class="stat-item">
+                            <span class="label">Comparisons:</span>
+                            <span id="comparisons">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="label">Swaps:</span>
+                            <span id="swaps">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="label">Steps:</span>
+                            <span id="steps">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="label">Time:</span>
+                            <span id="timeElapsed">0.0s</span>
+                        </div>
+                    </div>
+
+                    <!-- AI Predictor -->
+                    <div id="aiPredictor" class="ai-predictor hidden">
+                        <div class="predictor-content">
+                            <i class="fas fa-robot"></i>
+                            <div class="prediction-text">
+                                <span>Estimated steps remaining: <strong id="predictedSteps">0</strong></span>
+                                <span>Confidence: <strong id="confidence">95%</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Canvas Area -->
+                <div class="canvas-container">
+                    <canvas id="sortingCanvas" width="800" height="400"></canvas>
+                    <div id="heatmapOverlay" class="heatmap-overlay hidden"></div>
+                </div>
+
+                <!-- Timeline -->
+                <div class="timeline-container">
+                    <div class="timeline-header">
+                        <span>Sorting History</span>
+                        <button id="timelineToggle" class="btn btn--sm">
+                            <i class="fas fa-history"></i>
+                        </button>
+                    </div>
+                    <div id="timeline" class="timeline hidden">
+                        <canvas id="timelineCanvas" width="800" height="60"></canvas>
+                        <div id="timelineMarker" class="timeline-marker"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Race Mode Modal -->
+        <div id="raceModal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Algorithm Race 🏁</h3>
+                    <button class="modal-close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="algorithm-selector">
+                        <h4>Select Algorithms to Race:</h4>
+                        <div class="algorithm-grid">
+                            <label><input type="checkbox" value="bubbleSort" checked> Bubble Sort</label>
+                            <label><input type="checkbox" value="selectionSort" checked> Selection Sort</label>
+                            <label><input type="checkbox" value="insertionSort"> Insertion Sort</label>
+                            <label><input type="checkbox" value="mergeSort"> Merge Sort</label>
+                        </div>
+                    </div>
+                    <button id="startRaceBtn" class="btn btn--primary">Start Race!</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Race View -->
+        <div id="raceView" class="race-view hidden">
+            <div class="race-header">
+                <h3>Algorithm Race in Progress 🏁</h3>
+                <button id="exitRaceBtn" class="btn btn--outline">Exit Race</button>
+            </div>
+            <div class="race-lanes">
+                <div class="race-lane" id="raceLane1">
+                    <div class="lane-header">
+                        <span class="algorithm-name">Bubble Sort</span>
+                        <div class="race-stats">
+                            <span>Steps: <span class="step-count">0</span></span>
+                            <span>Time: <span class="time-count">0.0s</span></span>
+                        </div>
+                    </div>
+                    <canvas class="race-canvas" width="400" height="100"></canvas>
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                </div>
+                <div class="race-lane" id="raceLane2">
+                    <div class="lane-header">
+                        <span class="algorithm-name">Selection Sort</span>
+                        <div class="race-stats">
+                            <span>Steps: <span class="step-count">0</span></span>
+                            <span>Time: <span class="time-count">0.0s</span></span>
+                        </div>
+                    </div>
+                    <canvas class="race-canvas" width="400" height="100"></canvas>
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="race-controls">
+                <button id="racePlayBtn" class="btn btn--primary">
+                    <i class="fas fa-play"></i> Start Race
+                </button>
+            </div>
+        </div>
+
+        <!-- Easter Egg Overlay -->
+        <div id="easterEgg" class="easter-egg hidden">
+            <div class="easter-egg-content">
+                <h2>🥚 Easter Egg Activated! 🥚</h2>
+                <p>Welcome to Emoji Sort Mode!</p>
+                <button id="closeEasterEgg" class="btn btn--primary">Continue</button>
+            </div>
+        </div>
+
+        <!-- Tooltips -->
+        <div id="tooltip" class="tooltip hidden">
+            <div class="tooltip-content"></div>
+        </div>
+    </div>
+
+    <!-- Audio Context for Sound -->
+    <audio id="audioContext" style="display: none;"></audio>
+
+    <script src="app.js"></script>
+</body>
+</html>
